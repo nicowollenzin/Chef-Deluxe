@@ -17,7 +17,7 @@ ChefDeluxe::Application.routes.draw do
 
   resources :users
   
-  root :to => "recipes#new"
+  root :to => "recipes#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

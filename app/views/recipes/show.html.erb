@@ -1,20 +1,24 @@
-<% title "Recipe by " + creator(@recipe.user_id)  %>
+<% title @recipe.name + " by " + creator(@recipe.user_id)  %>
 
 <p>
 </p>
 <table>
 <% for ingredient in @recipe.ingredients %>
-  <tr><td> <%= ingredient.quantity %></td> <td><%= selected_unit(ingredient.unit_id).name%></td> <td><%= ingredient.name %></td></tr>
+  <tr>
+  	<td><%= ingredient.quantity %></td>
+  	<td><%= selected_unit(ingredient.unit_id).name%></td>
+  	<td><%= ingredient.name %></td>
+  	<td><%= ingredient.instruction %></td>
+  </tr>
 <% end %>
 </table>
-
-<p>
-  <strong>Name:</strong>
-  <%= @recipe.name %>
-</p>
 <p>
   <strong>Description:</strong>
-  <%= @recipe.description %>
+  <%= simple_format @recipe.description %>
+</p>
+<p>
+  <strong>Source:</strong>
+  <%= auto_link @recipe.link , :html => { :target => '_blank' } %>
 </p>
 
 <p>
