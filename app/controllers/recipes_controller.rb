@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  
+  before_filter :login_required, :only => [ :index ]
   def index
     @recipes = Recipe.all
   end
@@ -39,4 +41,9 @@ class RecipesController < ApplicationController
     @recipe.destroy
     redirect_to recipes_url, :notice => "Successfully destroyed recipe."
   end
+  
+  ### AJAX
+  
+ 
+  
 end

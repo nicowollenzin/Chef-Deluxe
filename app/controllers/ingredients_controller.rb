@@ -1,6 +1,10 @@
 class IngredientsController < ApplicationController
   def index
     @ingredients = Ingredient.all
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @ingredients }
+    end
   end
 
   def show

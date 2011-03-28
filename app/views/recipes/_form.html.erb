@@ -1,10 +1,10 @@
 <%= form_for @recipe do |f| %>
   <%= f.error_messages %>
-  
+  <div id="autocomplete_choices" class="autocomplete"></div>
   <%= f.fields_for :ingredients do |builder| %>
     <%= render 'ingredient_fields', :f => builder %>
   <% end %>
-  <p><%= link_to_add_fields "Add Ingredient", f, :ingredients %></p>
+  <p><%= link_to_add_fields image_tag("/images/plus.png", :alt => "add ingredient"), f, :ingredients %></p>
   
   <p>
     <%= f.label :name %><br />

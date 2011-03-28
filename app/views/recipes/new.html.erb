@@ -1,3 +1,13 @@
+<% content_for :head do %>
+<script type="text/javascript">
+   new Ajax.Autocompleter('recipe_ingredients_attributes_0_name','autocomplete_choices','/ingredients.xml', {
+  paramName: "name", 
+  minChars: 2, 
+  indicator: 'indicator1'
+});
+</script>
+<%end %>
+
 <% title "New Recipe" %>
 
 <%= render 'form' %>

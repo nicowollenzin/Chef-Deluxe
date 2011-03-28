@@ -1,14 +1,12 @@
 <div class="fields">
   <p>
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name %><span id="indicator1" style="display: none">working</span>
 
     <%= f.label :quantity %>
-    <%= f.text_field :quantity %>
-
-    <%= f.label :unit_id %>
+    <%= f.text_field :quantity, :size => 5 %>
     <%= f.select("unit_id", units_for_select, {:include_blank => true}) %>
   
-  	<%= link_to_remove_fields "x", f %>
+  	<%= link_to_remove_fields image_tag("/images/minus.png", :alt => "remove ingredient"), f %>
   </p>
 </div>
