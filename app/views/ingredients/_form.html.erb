@@ -1,0 +1,16 @@
+<%= form_for @ingredient do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :quantity %><br />
+    <%= f.text_field :quantity %>
+  </p>
+  <p>
+    <%= f.label :unit_id %><br />
+    <%= f.select("unit_id", units_for_select, {:include_blank => true}) %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

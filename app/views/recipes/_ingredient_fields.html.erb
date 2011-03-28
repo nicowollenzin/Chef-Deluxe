@@ -1,0 +1,14 @@
+<div class="fields">
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :quantity %>
+    <%= f.text_field :quantity %>
+
+    <%= f.label :unit_id %>
+    <%= f.select("unit_id", units_for_select, {:include_blank => true}) %>
+  
+  	<%= link_to_remove_fields "x", f %>
+  </p>
+</div>

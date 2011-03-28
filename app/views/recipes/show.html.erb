@@ -1,0 +1,23 @@
+<% title "Recipe by " + creator(@recipe.user_id)  %>
+
+<p>
+</p>
+<table>
+<% for ingredient in @recipe.ingredients %>
+  <tr><td> <%= ingredient.quantity %></td> <td><%= selected_unit(ingredient.unit_id).name%></td> <td><%= ingredient.name %></td></tr>
+<% end %>
+</table>
+<p>
+  <strong>Name:</strong>
+  <%= @recipe.name %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @recipe.description %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_recipe_path(@recipe) %> |
+  <%= link_to "Destroy", @recipe, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", recipes_path %>
+</p>

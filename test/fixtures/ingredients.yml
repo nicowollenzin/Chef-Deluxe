@@ -1,0 +1,9 @@
+one:
+  name: MyString
+  quantity: 1.5
+  unit_id: 1
+
+two:
+  name: MyString
+  quantity: 1.5
+  unit_id: 1

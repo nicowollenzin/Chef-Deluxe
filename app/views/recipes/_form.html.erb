@@ -1,0 +1,18 @@
+<%= form_for @recipe do |f| %>
+  <%= f.error_messages %>
+  
+  <%= f.fields_for :ingredients do |builder| %>
+    <%= render 'ingredient_fields', :f => builder %>
+  <% end %>
+  <p><%= link_to_add_fields "Add Ingredient", f, :ingredients %></p>
+  
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
