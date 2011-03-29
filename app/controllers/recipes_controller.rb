@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   
-  before_filter :login_required, :only => [ :index ]
+  before_filter :login_required, :only => [ :new, :create ]
+  
   def index
     @recipes = Recipe.all
   end

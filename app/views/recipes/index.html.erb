@@ -1,21 +1,8 @@
 <% title "Recipes" %>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Name</th>
-    <th>Description</th>
-  </tr>
+<ul>
   <% for recipe in @recipes %>
-    <tr>
-      <td><%= recipe.user_id %></td>
-      <td><%= recipe.name %></td>
-      <td><%= recipe.description %></td>
-      <td><%= link_to "Show", recipe %></td>
-      <td><%= link_to "Edit", edit_recipe_path(recipe) %></td>
-      <td><%= link_to "Destroy", recipe, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
+	<li><%= link_to recipe.name, recipe %> by <%= recipe.user_id %></li>
   <% end %>
-</table>
-
+</ul>
 <p><%= link_to "New Recipe", new_recipe_path %></p>
