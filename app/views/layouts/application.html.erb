@@ -24,5 +24,6 @@
       <%= content_tag :h1, yield(:title) if show_title? %>
       <%= yield %>
     </div>
+    <%= auto_discovery_link_tag(:rss, recipes_url(:format => 'rss')) %>
   </body>
 </html>

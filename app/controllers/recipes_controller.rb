@@ -4,6 +4,10 @@ class RecipesController < ApplicationController
   
   def index
     @recipes = Recipe.all
+    respond_to do |format|
+      format.html # new.html.erb
+      format.rss
+    end
   end
 
   def show
