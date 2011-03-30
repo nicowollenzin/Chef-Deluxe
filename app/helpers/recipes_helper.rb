@@ -13,7 +13,7 @@ module RecipesHelper
   
   def creator(user_id)
   	unless user_id.nil?
-  	  User.find(unit_id).name
+  	  User.find(user_id).username
   	else
   	  "unknown"
   	end

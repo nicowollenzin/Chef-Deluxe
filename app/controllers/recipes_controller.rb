@@ -17,6 +17,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(params[:recipe])
+    @recipe.user_id = current_user
     if @recipe.save
       redirect_to @recipe, :notice => "Successfully created recipe."
     else

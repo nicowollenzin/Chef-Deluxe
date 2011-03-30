@@ -23,6 +23,8 @@
 
 <p>
   <%= link_to "Edit", edit_recipe_path(@recipe) %> |
-  <%= link_to "Destroy", @recipe, :confirm => 'Are you sure?', :method => :delete %> |
+  <% if logged_in? && current_user.username == 'nico'%>
+    <%= link_to "Destroy", @recipe, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>
   <%= link_to "View All", recipes_path %>
 </p>
