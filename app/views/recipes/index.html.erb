@@ -1,8 +1,27 @@
-<% title "Recipes" %>
-
-<ul>
-  <% for recipe in @recipes %>
-	<li><%= link_to recipe.name, recipe %> by <%= creator recipe.user_id %></li>
-  <% end %>
-</ul>
-<p><%= link_to "New Recipe", new_recipe_path %></p>
+<%- model_class = Recipe -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:user) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recipes.each do |recipe| %>
+      <tr>
+        <td><%= link_to recipe.name,  recipe_path(recipe) %></td>
+        <td><%= recipe.user.name %></td>
+        <td><%=l recipe.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% if user_signed_in? %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_recipe_path,
+            :class => 'btn btn-primary' %>
+<% end %>

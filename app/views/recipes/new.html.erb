@@ -1,15 +1,5 @@
-<% content_for :head do %>
-<script type="text/javascript">
-   new Ajax.Autocompleter('recipe_ingredients_attributes_0_name','autocomplete_choices','/ingredients.xml', {
-  paramName: "name", 
-  minChars: 2, 
-  indicator: 'indicator1'
-});
-</script>
-<%end %>
-
-<% title "New Recipe" %>
-
-<%= render 'form' %>
-
-<p><%= link_to "Back to List", recipes_path %></p>
+<%- model_class = Recipe -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+<%= render :partial => 'form' %>

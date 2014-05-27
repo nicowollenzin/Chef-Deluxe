@@ -1,0 +1,8 @@
+<ul class="nav nav-pills navbar-right">
+  <% if user_signed_in? %>
+    <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "btn btn-primary btn-sm navbar-btn" %></li>
+  <% else %>
+    <li><%= link_to "Sign in", new_user_session_path, :class => "btn btn-primary btn-sm navbar-btn" %></li>
+    <li><%= link_to "Sign up", new_user_registration_path, :class => "btn btn-primary btn-sm navbar-btn" %></li>
+  <% end %>
+</ul>

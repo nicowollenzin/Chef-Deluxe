@@ -1,16 +1,37 @@
-<%= form_for @ingredient do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :name %><br />
+<%= form_for(@ingredient) do |f| %>
+  <% if @ingredient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ingredient.errors.count, "error") %> prohibited this ingredient from being saved:</h2>
+
+      <ul>
+      <% @ingredient.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
     <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :quantity %><br />
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br>
     <%= f.text_field :quantity %>
-  </p>
-  <p>
-    <%= f.label :unit_id %><br />
-    <%= f.select("unit_id", units_for_select, {:include_blank => true}) %>
-  </p>
-  <p><%= f.submit %></p>
+  </div>
+  <div class="field">
+    <%= f.label :instruction %><br>
+    <%= f.text_field :instruction %>
+  </div>
+  <div class="field">
+    <%= f.label :unit_id %><br>
+    <%= f.number_field :unit_id %>
+  </div>
+  <div class="field">
+    <%= f.label :recipe_id %><br>
+    <%= f.number_field :recipe_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>
