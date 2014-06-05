@@ -1,30 +1,47 @@
-<% title @recipe.name + " by " + creator(@recipe.user_id)  %>
+<%- model_class = Recipe -%>
+<div class="page-header">
+  <h1><%= @recipe.name %></h1>
+</div>
 
-<p>
-</p>
-<table>
-<% for ingredient in @recipe.ingredients %>
-  <tr>
-  	<td><%= ingredient.quantity %></td>
-  	<td><%= selected_unit(ingredient.unit_id).name%></td>
-  	<td><%= ingredient.name %></td>
-  	<td><%= ingredient.instruction %></td>
-  </tr>
-<% end %>
-</table>
-<p>
-  <strong>Description:</strong>
-  <%= simple_format @recipe.description %>
-</p>
-<p>
-  <strong>Source:</strong>
-  <%= auto_link @recipe.link , :html => { :target => '_blank' } %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">Zutaten</div>
+  <table class="table">
+    <th><%= model_class.human_attribute_name(:quantity) %></th>
+    <th><%= model_class.human_attribute_name(:unit) %></th>
+    <th><%= model_class.human_attribute_name(:name) %></th>
+    <th><%= model_class.human_attribute_name(:instruction) %></th>
 
-<p>
-  <%= link_to "Edit", edit_recipe_path(@recipe) %> |
-  <% if logged_in? && current_user.username == 'nico'%>
-    <%= link_to "Destroy", @recipe, :confirm => 'Are you sure?', :method => :delete %> |
+    <% for ingredient in @recipe.ingredients %>
+      <tr>
+        <td><%= ingredient.quantity %></td>
+        <td><%= selected_unit(ingredient.unit_id).name%></td>
+        <td><%= ingredient.name %></td>
+        <td><%= ingredient.instruction %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading"><%= model_class.human_attribute_name(:description) %></div>
+  <div class="panel-body"><%= simple_format @recipe.description %></div>
+</div>  
+  <% if not @recipe.link.blank? %>
+    <p><strong><%= model_class.human_attribute_name(:link) %>:</strong></p>
+    <p><%= @recipe.link %></p>
   <% end %>
-  <%= link_to "View All", recipes_path %>
-</p>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              recipes_path, :class => 'btn'  %>
+  <% if user_signed_in? and  @recipe.owner? current_user %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_recipe_path(@recipe), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              recipe_path(@recipe),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+  <% end %>
+</div>

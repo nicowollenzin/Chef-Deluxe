@@ -1,20 +1,29 @@
-<% title "Ingredient" %>
+<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Name:</strong>
   <%= @ingredient.name %>
 </p>
+
 <p>
   <strong>Quantity:</strong>
   <%= @ingredient.quantity %>
 </p>
+
 <p>
-  <strong>Unit:</strong>
-  <%= selected_unit(@ingredient.unit_id).name %>
+  <strong>Instruction:</strong>
+  <%= @ingredient.instruction %>
 </p>
 
 <p>
-  <%= link_to "Edit", edit_ingredient_path(@ingredient) %> |
-  <%= link_to "Destroy", @ingredient, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", ingredients_path %>
+  <strong>Unit:</strong>
+  <%= @ingredient.unit_id %>
 </p>
+
+<p>
+  <strong>Recipe:</strong>
+  <%= @ingredient.recipe_id %>
+</p>
+
+<%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
+<%= link_to 'Back', ingredients_path %>

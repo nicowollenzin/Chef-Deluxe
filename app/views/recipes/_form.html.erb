@@ -1,23 +1,32 @@
-<%= form_for @recipe do |f| %>
-  <%= f.error_messages %>
-  <div id="autocomplete_choices" class="autocomplete"></div>
-  <%= f.fields_for :ingredients do |builder| %>
-    <%= render 'ingredient_fields', :f => builder %>
-  <% end %>
-  <p><%= link_to_add_fields image_tag("/images/plus.png", :alt => "add ingredient"), f, :ingredients %></p>
+<%= form_for @recipe, :html => { :role => 'form' } do |f| %>
+  <div class="form-group">
+    <%= f.label :name, :class => 'form-label' %>
+    <%= f.text_field :name, :class => 'form-control' %>
+  </div>
   
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :link %><br />
-    <%= f.text_field :link %>
-  </p>
+  <div class="panel panel-default">
+    <div class="panel-heading">Ingredients</div>
+    <div class="panel-body">
+      <%= f.fields_for :ingredients do |builder| %>
+        <%= render 'ingredient_fields', :f => builder %>
+      <% end %>
+      <p><%= link_to_add_association " add", f, :ingredients, :class => "fa fa-plus-circle green" %></p>
+    </div>
+  </div>
+<hr>
+  <div class="form-group">
+    <%= f.label :description, :class => 'form-label' %>
+    <%= f.text_area :description, :rows => 10, :class => 'form-control' %>
+  </div>
   
-  <p><%= f.submit %></p>
+  <div class="form-group">
+    <%= f.label :link, :class => 'form-label' %>
+    <%= f.text_field :link, :class => 'form-control' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                recipes_path, :class => 'btn' %>
+  </div>
 <% end %>
