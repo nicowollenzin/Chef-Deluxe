@@ -52,6 +52,8 @@ GEM
       less (~> 2.4.0)
     font-awesome-rails (4.1.0.0)
       railties (>= 3.2, < 5.0)
+    friendly_id (5.0.4)
+      activerecord (>= 4.0.0)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (1.5.3)
@@ -146,6 +148,7 @@ DEPENDENCIES
   devise
   font-awesome-less
   font-awesome-rails
+  friendly_id (~> 5.0.0)
   jbuilder (~> 1.2)
   jquery-rails
   less-rails
